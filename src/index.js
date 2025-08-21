@@ -83,7 +83,9 @@ if (!connectionString) {
 
 export const pool = new Pool({
   connectionString,
-  ssl: process.env.PGSSL === 'require' ? { rejectUnauthorized: false } : undefined,
+  ssl: {
+    rejectUnauthorized: false, // Render ke liye required
+  },
 });
 
 async function createTables() {
